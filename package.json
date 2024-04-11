@@ -2,7 +2,7 @@
   "name": "my-films",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://YehorBondarenko96.github.io/MyFilms/",
+  "homepage": "https://YehorBondarenko96.github.io/my-films/",
   "dependencies": {
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.0.1",
