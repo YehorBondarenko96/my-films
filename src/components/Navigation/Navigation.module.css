@@ -1,0 +1,30 @@
+.divNavigation{
+    padding: 0;
+    margin: 0;
+}
+
+.aNavigation{
+    text-decoration: none;
+    color: #fff;
+}
+
+.pNavigation{
+    font-size: 24px;
+    content: '';
+    color: transparent;
+    margin: 0;
+    background-image: url('./home-4-svgrepo-com.svg#home');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: -15px;
+}
+
+
+
+@media (max-width: 400px){
+    .pNavigation{
+        font-size: 16px;
+        margin-left: -10px;
+    }
+}

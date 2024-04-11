@@ -1,0 +1,98 @@
+.divRegisterForm{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titleRegisterForm{
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.logoNameGreetingRegisterForm{
+    font-size: 36px;
+}
+
+.letterRegisterForm{
+    color: rgba(255, 255, 255, 0.5);
+    -webkit-text-stroke: 1px #fff;
+}
+
+.registerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0 10px 10px;
+    gap: 50px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0;
+}
+
+.labelRegisterForm{
+    width: 100%;
+}
+
+.pRegisterForm{
+    font-size: 18px;
+}
+
+.inputRegisterForm{
+    display: inline-block;
+    width: calc(100% - 10px);
+    height: 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+
+.inputRegisterForm::placeholder{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.buttonRegisterForm{
+    width: 150px;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+
+
+@media (max-width: 550px){
+    .registerForm{
+        max-width: 300px;
+        gap: 30px;
+    }
+}
+
+
+
+@media (max-width: 350px){
+    .registerForm{
+        max-width: 250px;
+        gap: 20px;
+    }
+}
+
+
+
+@media (max-height: 520px){
+    .titleRegisterForm{
+        margin: 10px;
+    }
+
+    .registerForm{
+        gap: 30px;
+    }
+}
