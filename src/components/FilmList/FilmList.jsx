@@ -1,6 +1,6 @@
 import css from '../Styles.module.css';
 import { UlForCL } from 'components/UlForCL/UlForCL';
-import { selectIsLoading, selectError } from '../../redux/selectors';
+import { selectIsLoading, selectSecError } from '../../redux/selectors';
 import { useSelector } from "react-redux";
 import { Loader } from "../Loader/Loader";
 
@@ -8,7 +8,7 @@ import { Loader } from "../Loader/Loader";
 export const FilmList = () => {
     const realScreenWidth = window.innerWidth;
     const isLoading = useSelector(selectIsLoading);
-    const error = useSelector(selectError);
+    const error = useSelector(selectSecError);
 
     let varPadding = 20;
     if(realScreenWidth > 1000){

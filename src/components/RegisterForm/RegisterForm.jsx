@@ -1,26 +1,17 @@
 import css from './RegisterForm.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { register } from '../../redux/workWithBackend/operations';
-import { selectError } from '../../redux/workWithBackend/selectors';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
-import { cleanError } from '../../redux/workWithBackend/slice';
 import { setRegistEnded, setEmail } from '../../redux/filmsSlice';
 
 const RegisterForm = () => {
     const dispatch = useDispatch();
-    const error = useSelector(selectError);
     const [realScreenWidth, setRealScreenWidth] = useState(null);
 
     useEffect(() => {
         setRealScreenWidth(window.innerWidth);
-        if (error) {
-            if (Number(error) === 400) { toast.error('Invalid registration data') };
-            dispatch(setRegistEnded(false));
-        };
-            dispatch(cleanError());
-    }, [error, dispatch]);
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -32,7 +23,6 @@ const RegisterForm = () => {
         dispatch(setEmail(email));
     };
 
-    // useEffect(() => {
     //     const body = document.querySelector('body');
     //     body.style.height = '100%';
     //     const root = document.querySelector('#root');
@@ -83,7 +73,6 @@ const RegisterForm = () => {
                 </label>
                 <button className={css.buttonRegisterForm} type="submit">Registration</button>
             </form>
-            <ToastContainer />
             </div>
     )
 };

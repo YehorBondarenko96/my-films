@@ -1,6 +1,6 @@
 import css from '../Styles.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { selectScreenOrient } from "../../redux/selectors";
 import { setScrollLeftLists } from '../../redux/filmsSlice';
 import { selectSelected, selectUsId } from '../../redux/workWithBackend/selectors';
@@ -13,8 +13,13 @@ export const ItemFilm = ({ film, activeId }) => {
     const screenOrient = useSelector(selectScreenOrient);
     const arrSelected = useSelector(selectSelected);
     const userId = useSelector(selectUsId);
+    const [isSelected, setIsSelected] = useState(false);
 
-    const isSelected = arrSelected.some(f => f.id === film.id);
+    useEffect(() => {
+        if (arrSelected) {
+        setIsSelected(arrSelected.some(f => f.id === film.id));
+    };
+    }, [arrSelected, film]);
 
     const firstDivItemFilmRef= useRef(null);
     const divItemFilmRef = useRef(null);
