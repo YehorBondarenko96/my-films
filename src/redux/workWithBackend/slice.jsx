@@ -37,6 +37,7 @@ const authSlice = createSlice({
         cleanError(state) { state.error = null },
         setToken(state, action) { state.token = action.payload },
         setRegistEnded: (state, action) => { state.registEnded = action.payload },
+        setIsLoggedIn: (state, action) => {state.isLoggedIn = action.payload}
     },
     extraReducers: builder => {
         builder
@@ -109,4 +110,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const {cleanError, setToken, setRegistEnded} = authSlice.actions;
+export const {cleanError, setToken, setRegistEnded, setIsLoggedIn} = authSlice.actions;
