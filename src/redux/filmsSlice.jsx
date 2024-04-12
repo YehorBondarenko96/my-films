@@ -1,5 +1,5 @@
 import { createSlice} from "@reduxjs/toolkit";
-import { fetchFilms, addFilm, deleteFilm, patchFilm, updateStatusFilm } from "./opertions";
+import { fetchFilms, addFilm, deleteFilm, patchFilm } from "./opertions";
 
 const filmsInitialState = {
     items: [],
@@ -32,7 +32,8 @@ const filmsSlice = createSlice({
         .addCase(fetchFilms.fulfilled, (state, action) => {
             state.isLoading = false;
             state.error = null;
-            state.items = action.payload;
+            const updResult = action.payload.map(f => ({...f, id: f._id, _id: undefined}));
+            state.items = updResult;
         })
         .addCase(fetchFilms.rejected, forRejected)
         .addCase(addFilm.pending, forPending)
@@ -58,14 +59,6 @@ const filmsSlice = createSlice({
             state.items.splice(index, 1, action.payload);
         })
         .addCase(patchFilm.rejected, forRejected)
-        .addCase(updateStatusFilm.pending, forPending)
-        .addCase(updateStatusFilm.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.error = null;
-            const index = state.items.findIndex(film => film.id === action.payload.id);
-            state.items.splice(index, 1, action.payload);
-        })
-        .addCase(updateStatusFilm.rejected, forRejected)
     }
 });
 

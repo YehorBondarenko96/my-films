@@ -2,14 +2,19 @@ import css from '../Styles.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { selectScreenOrient } from "../../redux/selectors";
-import { updateStatusFilm } from '../../redux/opertions';
 import { setScrollLeftLists } from '../../redux/filmsSlice';
+import { selectSelected, selectUsId } from '../../redux/workWithBackend/selectors';
+import { updateSelected } from "../../redux/workWithBackend/operations";
 
 
-export const ItemFilm = ({ film, index, id, activeId }) => {
+
+export const ItemFilm = ({ film, activeId }) => {
     const disp = useDispatch();
     const screenOrient = useSelector(selectScreenOrient);
+    const arrSelected = useSelector(selectSelected);
+    const userId = useSelector(selectUsId);
 
+    const isSelected = arrSelected.some(f => f.id === film.id);
 
     const firstDivItemFilmRef= useRef(null);
     const divItemFilmRef = useRef(null);
@@ -18,6 +23,25 @@ export const ItemFilm = ({ film, index, id, activeId }) => {
     const divPItemFilmsRef = useRef(null);
     const divInfoItemFilmsRef = useRef(null);
 
+    const forClickSelectBut = () => {
+        //////////////////////////////////////////////////////////////////////////////////////////
+        const filmsList = document.querySelector('.listFilmsForGap');
+        const scrollUl = filmsList.scrollLeft;
+        disp(setScrollLeftLists(scrollUl));
+///////////////////////////////////////////////////////////////////////////////////////////
+        let newSelected = [];
+        if (isSelected) {
+            newSelected = arrSelected.filter(f => f.id !== film.id);
+        } else {
+            newSelected = [...arrSelected, film]; 
+        }
+        const dataForUpdSel = {
+                id: userId,
+                selected: newSelected
+            };
+            disp(updateSelected(dataForUpdSel));
+    };
+
     const rewriteDate = (date) => {
         const dateObj = new Date(date);
         const day = dateObj.getDate().toString().padStart(2, '0');
@@ -25,19 +49,6 @@ export const ItemFilm = ({ film, index, id, activeId }) => {
         const year = dateObj.getFullYear();
         const formattedDate = `${day}.${month}.${year}`;
         return formattedDate
-    };
-
-    const handelClickFavBut = () => {
-        if (film.favorite) {
-            disp(updateStatusFilm({id: film._id, favorite: false}))
-        } else {
-            disp(updateStatusFilm({id: film._id, favorite: true}))
-        }
-//////////////////////////////////////////////////////////////////////////////////////////
-        const filmsList = document.querySelector('.listFilmsForGap');
-        const scrollUl = filmsList.scrollLeft;
-        disp(setScrollLeftLists(scrollUl));
-///////////////////////////////////////////////////////////////////////////////////////////
     };
 
     useEffect(() => {
@@ -70,7 +81,7 @@ export const ItemFilm = ({ film, index, id, activeId }) => {
 
             divInfoItemFilms.style.marginTop = screenWidth / (coef * 4) + 'px'
         }
-    }, [activeId, id, screenOrient]);
+    }, [activeId, screenOrient]);
 
     return(
         <div ref={firstDivItemFilmRef} className={[css.firstDivItemFilm, 'firstDivItemFilm'].join(' ')}
@@ -86,8 +97,8 @@ export const ItemFilm = ({ film, index, id, activeId }) => {
                 <button
                     ref={buttonFavRef}
                     type='button'
-                    className={[css.buttonFav, film.favorite ? css.isFavBut : css.notFavBut, 'buttonFav'].join(' ')}
-                    onClick={handelClickFavBut}
+                    className={[css.buttonFav, isSelected ? css.isFavBut : css.notFavBut, 'buttonFav'].join(' ')}
+                    onClick={forClickSelectBut}
                 >
                         Favorite
                     </button>

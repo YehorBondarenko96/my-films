@@ -17,12 +17,14 @@ export const register = createAsyncThunk(
         
         try {
             const res = await axios.post('/users/register', credentials);
-            // setAuthHeader(res.data.token);
-            // console.log('res.data.token: ', res.data.token);
             return res.data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
+        } catch (e) {
+        if (e.response) {
+            return thunkAPI.rejectWithValue(e.response.data.message);
+        } else {
+            return thunkAPI.rejectWithValue(e.message);
         }
+    }
     }
 );
 
@@ -31,11 +33,14 @@ export const verifyEmail = createAsyncThunk(
     async (credentials, thunkAPI) => {
         try {
             const res = await axios.post('/users/verify', credentials);
-            // setAuthHeader(res.data.token);
             return res.data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
+        } catch (e) {
+        if (e.response) {
+            return thunkAPI.rejectWithValue(e.response.data.message);
+        } else {
+            return thunkAPI.rejectWithValue(e.message);
         }
+    }
     }
 );
 
@@ -46,9 +51,13 @@ export const logIn = createAsyncThunk(
         const res = await axios.post('/users/login', credentials);
         setAuthHeader(res.data.token);
         return res.data;
-        } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
+        } catch (e) {
+        if (e.response) {
+            return thunkAPI.rejectWithValue(e.response.data.message);
+        } else {
+            return thunkAPI.rejectWithValue(e.message);
         }
+    }
     }
 );
 
@@ -56,8 +65,12 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     try {
         await axios.post('/users/logout');
         clearAuthHeader();
-    } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
+    } catch (e) {
+        if (e.response) {
+            return thunkAPI.rejectWithValue(e.response.data.message);
+        } else {
+            return thunkAPI.rejectWithValue(e.message);
+        }
     }
     }
 );
@@ -70,8 +83,65 @@ export const delUser = createAsyncThunk(
             const res = await axios.delete(`/users/${userId}`);
             clearAuthHeader();
             return res.data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
+        } catch (e) {
+        if (e.response) {
+            return thunkAPI.rejectWithValue(e.response.data.message);
+        } else {
+            return thunkAPI.rejectWithValue(e.message);
         }
+    }
+    }
+);
+
+export const findUser = createAsyncThunk(
+    'auth/findUser',
+    async (userId, thunkAPI) => {
+        
+        try {
+            const res = await axios.get(`/users/${userId}`);
+            return res.data;
+        } catch (e) {
+        if (e.response) {
+            return thunkAPI.rejectWithValue(e.response.data.message);
+        } else {
+            return thunkAPI.rejectWithValue(e.message);
+        }
+    }
+    }
+);
+
+export const updatePlayed = createAsyncThunk(
+    'auth/updatePlayed',
+    async (dataForPut, thunkAPI) => {
+        const userId = dataForPut.id;
+        const newPlayed = dataForPut.played;
+        try {
+            const res = await axios.put(`/users/${userId}/played`, newPlayed);
+            return res.data;
+        } catch (e) {
+        if (e.response) {
+            return thunkAPI.rejectWithValue(e.response.data.message);
+        } else {
+            return thunkAPI.rejectWithValue(e.message);
+        }
+    }
+    }
+);
+
+export const updateSelected = createAsyncThunk(
+    'auth/updateSelected',
+    async (dataForPut, thunkAPI) => {
+        const userId = dataForPut.id;
+        const newSelected = dataForPut.selected;
+        try {
+            const res = await axios.put(`/users/${userId}/selected`, newSelected);
+            return res.data;
+        } catch (e) {
+        if (e.response) {
+            return thunkAPI.rejectWithValue(e.response.data.message);
+        } else {
+            return thunkAPI.rejectWithValue(e.message);
+        }
+    }
     }
 );

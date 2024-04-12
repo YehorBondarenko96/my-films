@@ -18,14 +18,24 @@
     transition: border-color 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.buttonPlay {
+.notPlayButPlay {
     background-size: 60%;
     background-image: url('./play-1001-svgrepo-com.svg');
     transition: background-image 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.buttonPlay:hover {
+.notPlayButPlay:hover {
     background-image: url('./play-1001-svgrepo-com-hover.svg');
+}
+
+.isPlayButPlay {
+    background-size: 50%;
+    background-image: url('./stop-shape-svgrepo-com.svg');
+    transition: background-image 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.isPlayButPlay:hover {
+    background-image: url('./stop-shape-svgrepo-com-hover.svg');
 }
 
 .buttonDelete {

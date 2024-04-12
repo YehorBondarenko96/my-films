@@ -240,8 +240,6 @@ export const UlForCL = () => {
             setFilms(allFilms);
         };
     }, [filter, allFilms]);
-
-//     useEffect(() => {
 //             const realScreenHeight = window.innerHeight;
 //             const header = document.querySelector('header');
 //                 const main = document.querySelector('.divForAllMain');
@@ -272,18 +270,17 @@ export const UlForCL = () => {
                 <h2>Right now you don't have any films.</h2>
             ) : (
             films.length !== 0 ? (
-                films.map((film) => { 
-                    // console.log('film: ', film);
+                films.map((film) => {
                     return(
                         <li ref={e => { 
                             if (e !== null && !itemFilmRef.current.some(i => i.getAttribute('id') === e.getAttribute('id'))) {
                                         itemFilmRef.current.push(e); 
                                     }
                             }}
-                            key={film._id}
-                            id={film._id}
+                            key={film.id}
+                            id={film.id}
                             className={[css.itemContact, 'itemContact'].join(' ')}>
-                                {activeId === film._id ? 
+                                {activeId === film.id ? 
                                 <ActiveItemFilm
                         film={film}
                                 />
@@ -291,7 +288,7 @@ export const UlForCL = () => {
                                 <ItemFilm 
                         film={film}
                         index={films.indexOf(film)}
-                        id={film._id}
+                        id={film.id}
                         activeId={activeId}
                     />
                             }

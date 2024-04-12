@@ -12,7 +12,7 @@ const DetailsFilm = () => {
     const [backLocation] = useState(location.state?.from ?? '/');
     const {filmId} = useParams();
     const allFilms = useSelector(selectFilms);
-    const film = allFilms.find(f => f._id === filmId);
+    const film = allFilms.find(f => f.id === filmId);
 
     const allDivDetFilmRef = useRef(null);
     const firstDivDetInfRef = useRef(null);

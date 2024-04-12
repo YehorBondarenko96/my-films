@@ -3,16 +3,59 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectScreenOrient } from "../../redux/selectors";
 import { Link } from "react-router-dom";
 import css from './ManipButs.module.css';
+import { selectPlayed, selectSelected, selectUsId } from "../../redux/workWithBackend/selectors";
+import { updatePlayed, updateSelected } from "../../redux/workWithBackend/operations";
+import { setScrollLeftLists } from '../../redux/filmsSlice';
 
 export const ManipButs = ({film, coef}) => { 
-    const dispatch = useDispatch();
+    const disp = useDispatch();
     const screenOrient = useSelector(selectScreenOrient);
+    const arrPlayed = useSelector(selectPlayed);
+    const arrSelected = useSelector(selectSelected);
+    const userId = useSelector(selectUsId);
+
+    const isPlayed = arrPlayed.some(f => f.id === film.id);
+    const isSelected = arrSelected.some(f => f.id === film.id);
 
     const ulButActItRef = useRef(null);
     const buttonPlayRef = useRef(null);
     const buttonDetRef = useRef(null);
     const buttonSelRef = useRef(null);
     const buttonDelRef = useRef(null);
+
+    const forClickPlayBut = () => {
+        const filmsList = document.querySelector('.listFilmsForGap');
+        const scrollUl = filmsList.scrollLeft;
+        disp(setScrollLeftLists(scrollUl));
+        let newPlayed = [];
+        if (isPlayed) {
+            newPlayed = arrPlayed.filter(f => f.id !== film.id);
+        } else {
+            newPlayed = [...arrPlayed, film]; 
+        }
+        const dataForUpdPlayed = {
+                id: userId,
+                played: newPlayed
+            };
+            disp(updatePlayed(dataForUpdPlayed));
+    };
+
+    const forClickSelectBut = () => {
+        const filmsList = document.querySelector('.listFilmsForGap');
+        const scrollUl = filmsList.scrollLeft;
+        disp(setScrollLeftLists(scrollUl));
+        let newSelected = [];
+        if (isSelected) {
+            newSelected = arrSelected.filter(f => f.id !== film.id);
+        } else {
+            newSelected = [...arrSelected, film]; 
+        }
+        const dataForUpdSel = {
+                id: userId,
+                selected: newSelected
+            };
+            disp(updateSelected(dataForUpdSel));
+    };
 
     useEffect(() => {
         const screenWidth = screenOrient <= 1000 ? screenOrient : 1000;
@@ -43,9 +86,9 @@ export const ManipButs = ({film, coef}) => {
                     <button
                 ref={buttonPlayRef}
                 id={film._id}
-                className={[css.butActIt, css.buttonPlay].join(' ')}
+                className={[css.butActIt, isPlayed ? css.isPlayButPlay : css.notPlayButPlay].join(' ')}
                 type='button'
-                // onClick={updateStateForDelete}
+                onClick={forClickPlayBut}
             >
                         Play
             </button>
@@ -54,14 +97,14 @@ export const ManipButs = ({film, coef}) => {
                     <button
                 ref={buttonSelRef}
                 type='button'
-                className={[css.butActIt, film.favorite ? css.isFavBut : css.notFavBut].join(' ')}
-            // onClick={forClickUpdBut}
+                className={[css.butActIt, isSelected ? css.isFavBut : css.notFavBut].join(' ')}
+            onClick={forClickSelectBut}
             >
                         Selected
             </button>
             </li>
                     <li>
-                            <Link to={`/films/${film._id}`} state={{from: window.location.href}}>
+                            <Link to={`/films/${film.id}`} state={{from: window.location.href}}>
                         
                     <button
                 ref={buttonDetRef}
