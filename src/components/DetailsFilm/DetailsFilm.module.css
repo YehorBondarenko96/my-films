@@ -6,4 +6,30 @@
     top: 0;
     left: 0;
     z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstDivDetInf{
+    background-color: #212121;
+    display: flex;
+}
+
+.imgDetFilm{
+    object-fit: cover;
+}
+
+.divPInfManBut{
+    display: flex;
+    flex-direction: column;
+}
+
+.divPInfDetInf{
+    flex: 1;
+}
+
+.nameCatDitInf{
+    font-weight: 700;
+    color: yellow;
 }

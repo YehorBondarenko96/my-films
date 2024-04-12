@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { selectScreenOrient } from "../../redux/selectors";
 import { updateStatusFilm } from '../../redux/opertions';
+import { setScrollLeftLists } from '../../redux/filmsSlice';
 
 
 export const ItemFilm = ({ film, index, id, activeId }) => {
@@ -32,6 +33,11 @@ export const ItemFilm = ({ film, index, id, activeId }) => {
         } else {
             disp(updateStatusFilm({id: film._id, favorite: true}))
         }
+//////////////////////////////////////////////////////////////////////////////////////////
+        const filmsList = document.querySelector('.listFilmsForGap');
+        const scrollUl = filmsList.scrollLeft;
+        disp(setScrollLeftLists(scrollUl));
+///////////////////////////////////////////////////////////////////////////////////////////
     };
 
     useEffect(() => {
