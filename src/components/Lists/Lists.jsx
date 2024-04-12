@@ -2,6 +2,8 @@ import { FilmList } from "components/FilmList/FilmList";
 import { useSelector } from "react-redux";
 import { selectFilms, selectFilter } from "../../redux/selectors";
 import { selectPlayed, selectSelected, selectFavorite } from "../../redux/workWithBackend/selectors";
+import { Loader } from "components/Loader/Loader";
+import { selectIsLoading } from "../../redux/selectors";
 
 export const Lists = () => { 
     const allFilms = useSelector(selectFilms);
@@ -10,11 +12,14 @@ export const Lists = () => {
     const arrSelected = useSelector(selectSelected);
     const arrFavorite = useSelector(selectFavorite);
 
+    const isLoading = useSelector(selectIsLoading);
+
 
 
     return (
         <>
-            {(allFilms && allFilms.length > 0) ?
+            {isLoading ? <Loader /> : <>
+                {(allFilms && allFilms.length > 0) ?
             (<>
             <FilmList
                 allFilms={allFilms}
@@ -47,6 +52,7 @@ export const Lists = () => {
                     
         )
         }
+            </>}
         </>
     )
 };
