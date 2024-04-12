@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Loader } from "../Loader/Loader";
 
 
-export const FilmList = () => {
+export const FilmList = ({allFilms, title}) => {
     const realScreenWidth = window.innerWidth;
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectSecError);
@@ -29,8 +29,9 @@ export const FilmList = () => {
             paddingLeft: varPadding,
             paddingRight: varPadding,
         }}
-        >
-                {isLoading && !error ? <Loader /> : <UlForCL />}
+                    >
+                        <h2>{title}</h2>
+                        {isLoading && !error ? <Loader /> : <UlForCL allFilms={allFilms} />}
             </div>
             )}
         </div>

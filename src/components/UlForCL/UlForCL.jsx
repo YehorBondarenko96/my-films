@@ -2,16 +2,15 @@ import css from "../Styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { ItemFilm } from "components/ItemFilm/ItemFilm";
 import { ActiveItemFilm } from "components/ActiveItemFilm/ActiveItemFilm";
-import { selectFilms, selectFilter, selectScrollLeftLists } from "../../redux/selectors";
+import { selectFilter, selectScrollLeftLists } from "../../redux/selectors";
 import { useRef, useEffect, useState, Suspense } from "react";
 import { setScrollLeftLists } from "../../redux/filmsSlice";
 import { selectScreenOrient } from "../../redux/selectors";
 import { Outlet } from "react-router-dom";
 
 
-export const UlForCL = () => {
+export const UlForCL = ({allFilms}) => {
     const dispatch = useDispatch();
-    const allFilms = useSelector(selectFilms);
     const [films, setFilms] = useState(allFilms);
     const filter = useSelector(selectFilter);
     const scrollLeftLists = useSelector(selectScrollLeftLists);
@@ -42,7 +41,6 @@ export const UlForCL = () => {
         const listFilmsRef = listFilms.current;
         const indHasClickEL = indHasClickELRef.current;
         const itemsFilm = itemFilmRef.current;
-        const listFilmsForGap = document.querySelector('.listFilmsForGap');
         const coef = 3.2;
         let realScreenWidth = window.innerWidth;
         let screenWidth = realScreenWidth <= 1000 ? realScreenWidth : 1000;
@@ -54,7 +52,9 @@ export const UlForCL = () => {
             i.style.borderRadius = screenWidth/(coef * 22) + 'px';
             setActiveId(null);
         });
-        listFilmsForGap.style.gap = screenWidth/(coef * 10) + 'px';
+            if (listFilms.current) {
+            listFilms.current.style.gap = screenWidth/(coef * 10) + 'px';
+        }
 
         const forScroll = () => {
                 if(itemsFilm.length > 0){
@@ -240,32 +240,10 @@ export const UlForCL = () => {
             setFilms(allFilms);
         };
     }, [filter, allFilms]);
-//             const realScreenHeight = window.innerHeight;
-//             const header = document.querySelector('header');
-//                 const main = document.querySelector('.divForAllMain');
-//                 const headerHeight = header.getBoundingClientRect().height;
-//                 const mainHeight = main.getBoundingClientRect().height;
-//                 let pageHeight = headerHeight + mainHeight + 15;
-//                 const body = document.querySelector('body');
-//                     body.style.height = '100%';
-//                     const root = document.querySelector('#root');
-//                     root.style.height = '100%';
-//                     const html = document.querySelector('html');
-//                     html.style.height = '100%';
-//                 if(realScreenHeight < pageHeight && films.length > 0){
-//                     body.style.height = 'auto';
-//                     root.style.height = 'auto';
-//                     html.style.height = 'auto';
-//                 };
-
-//     return () => {
-//         pageHeight = null;
-//     }
-// }, [films]);
 
     return(
         <>
-            <ul ref={listFilms} className={[css.listFilms, 'listFilmsForGap'].join(' ')}>
+            <ul ref={listFilms} className={css.listFilms}>
             {(films.length === 0 && filter.length === 0) ? (
                 <h2>Right now you don't have any films.</h2>
             ) : (

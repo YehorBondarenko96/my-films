@@ -1,5 +1,4 @@
 import { Filter } from 'components/Filter/Filter';
-import { FilmList } from 'components/FilmList/FilmList';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectToken, selectUsId } from '../../redux/workWithBackend/selectors';
@@ -8,6 +7,8 @@ import css from './PageUsers.module.css';
 import { useEffect } from 'react';
 import { fetchFilms } from "../../redux/opertions";
 import { findUser } from '../../redux/workWithBackend/operations';
+import { Lists } from 'components/Lists/Lists';
+
 
 const PageUsers = () => {
     const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const PageUsers = () => {
         <div className={css.divContFiltPageUsers}>
         <Filter />
         </div>
-        <FilmList />
+            <Lists/>
         </>
     )
 };
