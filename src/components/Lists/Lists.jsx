@@ -14,7 +14,7 @@ export const Lists = () => {
 
     return (
         <>
-            {(allFilms.length > 0) ?
+            {(allFilms && allFilms.length > 0) ?
             (<>
             <FilmList
                 allFilms={allFilms}
@@ -22,19 +22,19 @@ export const Lists = () => {
             />
             {filter.length === 0 && 
                 <>
-                    {(arrSelected.length > 0) &&
+                    {(arrSelected && arrSelected.length > 0) &&
                         <FilmList
                 allFilms={arrSelected}
                 title='My list'
             />
                 }
-                    {(arrPlayed.length > 0) &&
+                    {(arrPlayed && arrPlayed.length > 0) &&
                         <FilmList
                 allFilms={arrPlayed}
                 title='Viewed'
                 />
                         }
-                {(arrFavorite.length > 0) &&
+                {(arrFavorite && arrFavorite.length > 0) &&
                         <FilmList
                 allFilms={arrFavorite}
                 title='Favorites'

@@ -12,6 +12,7 @@ const initialState = {
     },
     token: null,
     isLoggedIn: false,
+    registEnded: false,
     error: null
 };
 
@@ -34,7 +35,8 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         cleanError(state) { state.error = null },
-        setToken(state, action){state.token = action.payload}
+        setToken(state, action) { state.token = action.payload },
+        setRegistEnded: (state, action) => { state.registEnded = action.payload },
     },
     extraReducers: builder => {
         builder
@@ -42,6 +44,7 @@ const authSlice = createSlice({
         .addCase(register.fulfilled, (state, action) => {
             state.user = action.payload.user;
             state.isLoggedIn = true;
+            state.registEnded = true;
         })
         .addCase(register.rejected, forRejected)
         .addCase(verifyEmail.pending, forPending)
@@ -106,4 +109,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const {cleanError, setToken} = authSlice.actions;
+export const {cleanError, setToken, setRegistEnded} = authSlice.actions;

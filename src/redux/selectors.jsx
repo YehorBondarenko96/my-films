@@ -38,6 +38,4 @@ export const selectScrollLeftLists = state => state.films.scrollLeftLists;
 
 export const selectScreenOrient = state => state.films.screenOrientation;
 
-export const selectRegistEnded = state => state.films.registEnded;
-
 export const selectEmail = state => state.films.email;

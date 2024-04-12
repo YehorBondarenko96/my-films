@@ -7,7 +7,6 @@ const filmsInitialState = {
     screenOrientation: 1,
     isLoading: false,
     error: null,
-    registEnded: false,
     email: null
     };
 
@@ -23,7 +22,6 @@ const filmsSlice = createSlice({
     reducers:{
         setScrollLeftLists: (state, action) => {state.scrollLeftLists = action.payload},
         setScreenOrientation: (state, action) => { state.screenOrientation = action.payload },
-        setRegistEnded: (state, action) => { state.registEnded = action.payload },
         setEmail: (state, action) => { state.email = action.payload}
     },
     extraReducers: builder => {
@@ -63,4 +61,4 @@ const filmsSlice = createSlice({
 });
 
 export const filmsReducer = filmsSlice.reducer;
-export const {setScrollLeftLists, setScreenOrientation, setRegistEnded, setEmail} = filmsSlice.actions;
+export const {setScrollLeftLists, setScreenOrientation, setEmail} = filmsSlice.actions;

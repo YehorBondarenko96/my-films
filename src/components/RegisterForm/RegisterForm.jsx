@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { register } from '../../redux/workWithBackend/operations';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
-import { setRegistEnded, setEmail } from '../../redux/filmsSlice';
+import { setEmail } from '../../redux/filmsSlice';
 
 const RegisterForm = () => {
     const dispatch = useDispatch();
@@ -19,7 +19,6 @@ const RegisterForm = () => {
         const email = e.currentTarget.elements.email.value;
         const password = e.currentTarget.elements.password.value;
         dispatch(register({ name, email, password }));
-        dispatch(setRegistEnded(true));
         dispatch(setEmail(email));
     };
 

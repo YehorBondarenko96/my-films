@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectScreenOrient, selectEmail } from "../../redux/selectors";
 import { verifyEmail, delUser } from '../../redux/workWithBackend/operations';
-import { setRegistEnded } from '../../redux/filmsSlice';
+import { setRegistEnded } from '../../redux/workWithBackend/slice';
 import { selectUsId } from '../../redux/workWithBackend/selectors';
 
 
