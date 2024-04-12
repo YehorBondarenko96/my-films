@@ -13,6 +13,7 @@ export const ItemFilm = ({ film, index, id, activeId }) => {
     const firstDivItemFilmRef= useRef(null);
     const divItemFilmRef = useRef(null);
     const buttonFavRef = useRef(null);
+    const hItemFilmsNameRef = useRef(null);
     const divPItemFilmsRef = useRef(null);
     const divInfoItemFilmsRef = useRef(null);
 
@@ -37,48 +38,41 @@ export const ItemFilm = ({ film, index, id, activeId }) => {
         const coef = 2;
         const screenWidth = screenOrient <= 1000 ? screenOrient : 1000;
         if (firstDivItemFilmRef.current && divItemFilmRef.current && buttonFavRef.current &&
-            divPItemFilmsRef.current && divInfoItemFilmsRef.current) {
+            divPItemFilmsRef.current && divInfoItemFilmsRef.current && hItemFilmsNameRef.current) {
             const firstDivItemFilm = firstDivItemFilmRef.current;
             const divItemFilm = divItemFilmRef.current;
             const buttonFav = buttonFavRef.current;
+            const hItemFilmsName = hItemFilmsNameRef.current;
             const divPItemFilms = divPItemFilmsRef.current;
             const divInfoItemFilms = divInfoItemFilmsRef.current;
 
             firstDivItemFilm.style.borderRadius = screenWidth/(coef * 44) + 'px';
             divItemFilm.style.borderRadius = screenWidth/(coef * 44) + 'px';
             divItemFilm.style.textShadow = screenWidth / (coef * 250) + 'px ' + screenWidth / (coef * 250) + 'px ' + screenWidth / (coef * 100) + 'px black';
-            divItemFilm.style.padding = screenWidth/(coef * 50) + 'px';
         
             
             buttonFav.style.right = screenWidth/(coef * 22) + 'px';
             buttonFav.style.width = screenWidth/(coef * 20) + 'px';
             buttonFav.style.height = screenWidth / (coef * 20) + 'px';
+
+            hItemFilmsName.style.paddingLeft = screenWidth / (coef * 50) + 'px';
+            hItemFilmsName.style.paddingRight = screenWidth / (coef * 50) + 'px';
             
             divPItemFilms.style.fontSize = screenWidth / (coef * 38) + 'px';
+            divPItemFilms.style.padding = screenWidth / (coef * 50) + 'px';
+            divPItemFilms.style.borderRadius = `0 0 ${screenWidth/(coef * 44)}px ${screenWidth/(coef * 44)}px`;
+
             divInfoItemFilms.style.marginTop = screenWidth / (coef * 4) + 'px'
-        } 
-        // else if (id === activeId && firstDivItemFilm && divItemFilm && buttonCall) {
-        //     firstDivItemFilm.style.borderRadius = screenWidth/(coef * 44) * 1.4 + 'px';
-        //     divItemFilm.style.borderRadius = screenWidth/(coef * 44) * 1.4 + 'px';
-        //     divItemFilm.style.textShadow = screenWidth/(coef * 250) + 'px' + screenWidth/(coef * 250) + 'px' + screenWidth/(coef * 100) + 'px black';
-        //     buttonCall.style.bottom = screenWidth/(coef * 22) * 1.4 + 'px';
-        //     buttonCall.style.left = screenWidth/(coef * 22) * 1.4 + 'px';
-        //     buttonCall.style.width = screenWidth/(coef * 13) * 1.4 + 'px';
-        //     buttonCall.style.height = screenWidth/(coef * 13) * 1.4 + 'px';
-        // }
+        }
     }, [activeId, id, screenOrient]);
 
     return(
         <div ref={firstDivItemFilmRef} className={[css.firstDivItemFilm, 'firstDivItemFilm'].join(' ')}
-        style={{
-            backgroundImage: `url(${film.image})`,
-            backgroundSize: 'cover', 
-            backgroundPosition: 'center', 
-            }}>
+        style={{backgroundImage: `url(${film.image})`}}>
                 <div ref={divItemFilmRef} className={[css.divItemFilm, 'divItemFilm'].join(' ')}>
                 <div ref={divInfoItemFilmsRef} className={css.divInfoItemFilms}>
-                    <h2 className={css.hItemFilmsName}>{film.title}</h2> 
-                <div ref={divPItemFilmsRef}>
+                    <h2 ref={hItemFilmsNameRef} className={css.hItemFilmsName}>{film.title}</h2> 
+                <div ref={divPItemFilmsRef} className={css.divPItemFilms}>
                     <p className={css.pItemFilmsNumber}>Rating: {film.rating}</p>
                     <p className={css.pItemFilmsNumber}>Release date: {rewriteDate(film.release_date)}</p>
                 </div>

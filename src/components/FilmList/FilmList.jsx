@@ -11,7 +11,6 @@ import axios from 'axios';
 
 export const FilmList = () => {
     const realScreenWidth = window.innerWidth;
-    
     const token = useSelector(selectToken);
 
     const dispatch = useDispatch();

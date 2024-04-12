@@ -9,6 +9,7 @@ import { setScreenOrientation } from "../../redux/filmsSlice";
 import { selectRegistEnded } from "../../redux/selectors";
 import { VerifyWindow } from "../VerifyWindow/VerifyWindow";
 
+
 export const SharedLayout = () => {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(selectIsLoggedIn);

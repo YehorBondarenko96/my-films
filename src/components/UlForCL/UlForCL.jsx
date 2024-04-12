@@ -6,8 +6,7 @@ import { selectFilms, selectFilter, selectScrollLeftLists } from "../../redux/se
 import { useRef, useEffect, useState, Suspense } from "react";
 import { setScrollLeftLists } from "../../redux/filmsSlice";
 import { selectScreenOrient } from "../../redux/selectors";
-import { Link, Outlet } from "react-router-dom";
-import { Loader } from "components/Loader/Loader";
+import { Outlet } from "react-router-dom";
 
 
 export const UlForCL = () => {
@@ -284,7 +283,6 @@ export const UlForCL = () => {
                             key={film._id}
                             id={film._id}
                             className={[css.itemContact, 'itemContact'].join(' ')}>
-                            <Link to={`/films/${film._id}`}>
                                 {activeId === film._id ? 
                                 <ActiveItemFilm
                         film={film}
@@ -297,7 +295,6 @@ export const UlForCL = () => {
                         activeId={activeId}
                     />
                             }
-                            </Link>
                     </li>
                     )
                 })
@@ -306,10 +303,10 @@ export const UlForCL = () => {
                     )
             )
             }
-        </ul>
-        <Suspense fallback={<Loader />}>
-            <Outlet />
-        </Suspense>
+            </ul>
+            <Suspense>
+                <Outlet/>
+            </Suspense>
         </>
     )
 };

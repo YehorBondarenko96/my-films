@@ -1,4 +1,3 @@
-import { FilmForm } from 'components/FilmForm/FilmForm';
 import { Filter } from 'components/Filter/Filter';
 import { FilmList } from 'components/FilmList/FilmList';
 import axios from 'axios';
@@ -28,7 +27,6 @@ const PageUsers = () => {
         <>
         <div className={css.divContFiltPageUsers}>
         <Filter />
-        <FilmForm />
         </div>
         <FilmList />
         </>

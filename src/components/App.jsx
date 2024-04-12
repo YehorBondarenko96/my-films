@@ -53,12 +53,12 @@ export const App = () => {
     <Route path="/login" element={
       <LoggedInOrNot redirectTo='/films' component={<LogInForm/>}/>
     }/>
-    <Route path="/films" element={
-      <NotLoggedOrY component={<PageUsers/>}/>
-    }>
-              <Route path="/films/:filmId" element={<DetailsFilm />} />
-          <Route path="*" element={<Navigate to="/" />} /> 
-              </Route>
+          <Route path="/films" element={
+            <NotLoggedOrY component={<PageUsers/>}/>
+          }>
+                <Route path="/films/:filmId" element={<DetailsFilm />} />
+                <Route path="*" element={<Navigate to="/" />} /> 
+          </Route>
   </Route>
   <Route path="*" element={<Navigate to="/" />} /> 
   </Routes>

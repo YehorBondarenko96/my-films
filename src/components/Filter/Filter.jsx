@@ -19,11 +19,11 @@ export const Filter = () => {
         const realScreenWidth = window.innerWidth;
 
         if(realScreenWidth > 465){
-            setPlaceholderValue('Please start typing the desired name')
+            setPlaceholderValue('Please start typing the desired title')
         } else if(realScreenWidth <= 465 && realScreenWidth > 370){
-            setPlaceholderValue('Please start typing name')
+            setPlaceholderValue('Please start typing title')
         } else {
-            setPlaceholderValue('Type name')
+            setPlaceholderValue('Type title')
         }
     }, []);
 
