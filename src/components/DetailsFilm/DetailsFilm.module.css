@@ -8,21 +8,26 @@
     z-index: 9999;
     display: flex;
     justify-content: center;
-    align-items: center;
+    overflow: auto;
 }
 
 .firstDivDetInf{
     background-color: #212121;
     display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
 .imgDetFilm{
     object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .divPInfManBut{
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .divPInfDetInf{
@@ -32,4 +37,15 @@
 .nameCatDitInf{
     font-weight: 700;
     color: yellow;
+}
+
+@media(min-width: 600px){
+    .allDivDetFilm{
+        align-items: center;
+    }
+
+    .firstDivDetInf {
+        flex-direction: row;
+        box-sizing: content-box;
+    }
 }

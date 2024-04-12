@@ -26,12 +26,24 @@ const DetailsFilm = () => {
             const firstDivDetInf = firstDivDetInfRef.current;
             const imgDetFilm = imgDetFilmRef.current;
 
+            if (screenWidth >= 600) {
             firstDivDetInf.style.width = screenWidth / (coef * 0.5) + 'px';
             firstDivDetInf.style.height = screenWidth / coef + 'px';
             firstDivDetInf.style.padding = screenWidth / (coef * 20) + 'px';
             firstDivDetInf.style.gap = screenWidth / (coef * 20) + 'px';
+            firstDivDetInf.style.fontSize = screenWidth / (coef * 25) + 'px';
             imgDetFilm.style.width = screenWidth / (coef * 1.5) + 'px';
             imgDetFilm.style.height = screenWidth / coef + 'px';
+            } else {
+            firstDivDetInf.style.height = screenWidth * 1.9 + 'px';
+            firstDivDetInf.style.width = screenWidth / 1.1 + 'px';
+            firstDivDetInf.style.padding = screenWidth / (coef * 20) + 'px';
+            firstDivDetInf.style.margin = screenWidth / 20 + 'px';
+            firstDivDetInf.style.gap = screenWidth / (coef * 20) + 'px';
+            firstDivDetInf.style.fontSize = screenWidth / 25 + 'px';
+            imgDetFilm.style.width = screenWidth / 1.5 + 'px';
+            imgDetFilm.style.height = screenWidth + 'px';
+            }
         }
         
 
@@ -57,8 +69,7 @@ const DetailsFilm = () => {
         }
     };
 
-            allDivDetFilm.addEventListener('click', handelClickAllDiv);
-            // document.addEventListener('keydown', handelEsc);
+        allDivDetFilm.addEventListener('click', handelClickAllDiv);
 
         }
     });
