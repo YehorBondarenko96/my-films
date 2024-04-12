@@ -243,7 +243,7 @@ export const UlForCL = ({allFilms}) => {
 
     return(
         <>
-            <ul ref={listFilms} className={css.listFilms}>
+            <ul ref={listFilms} className={[css.listFilms, 'listFilmsForGap'].join(' ')}>
             {(films.length === 0 && filter.length === 0) ? (
                 <h2>Right now you don't have any films.</h2>
             ) : (

@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectScreenOrient } from "../../redux/selectors";
 import { Link } from "react-router-dom";
 import css from './ManipButs.module.css';
-import { selectPlayed, selectSelected, selectUsId } from "../../redux/workWithBackend/selectors";
-import { updatePlayed, updateSelected } from "../../redux/workWithBackend/operations";
+import { selectPlayed, selectSelected, selectUsId, selectFavorite } from "../../redux/workWithBackend/selectors";
+import { updateFavorite, updatePlayed, updateSelected } from "../../redux/workWithBackend/operations";
 import { setScrollLeftLists } from '../../redux/filmsSlice';
 
 export const ManipButs = ({film, coef}) => { 
@@ -12,10 +12,13 @@ export const ManipButs = ({film, coef}) => {
     const screenOrient = useSelector(selectScreenOrient);
     const arrPlayed = useSelector(selectPlayed);
     const arrSelected = useSelector(selectSelected);
+    const arrFavorite = useSelector(selectFavorite);
     const userId = useSelector(selectUsId);
 
     const isPlayed = arrPlayed.some(f => f.id === film.id);
     const isSelected = arrSelected.some(f => f.id === film.id);
+    const isFavorite = arrFavorite.some(f => f.id === film.id);
+
 
     const ulButActItRef = useRef(null);
     const buttonPlayRef = useRef(null);
@@ -55,6 +58,23 @@ export const ManipButs = ({film, coef}) => {
                 selected: newSelected
             };
             disp(updateSelected(dataForUpdSel));
+    };
+
+    const forClickFavBut = () => {
+        const filmsList = document.querySelector('.listFilmsForGap');
+        const scrollUl = filmsList.scrollLeft;
+        disp(setScrollLeftLists(scrollUl));
+        let newFavorite = [];
+        if (isFavorite) {
+            newFavorite = arrFavorite.filter(f => f.id !== film.id);
+        } else {
+            newFavorite = [...arrFavorite, film]; 
+        }
+        const dataForUpdSel = {
+                id: userId,
+                favorite: newFavorite
+            };
+            disp(updateFavorite(dataForUpdSel));
     };
 
     useEffect(() => {
@@ -97,10 +117,21 @@ export const ManipButs = ({film, coef}) => {
                     <button
                 ref={buttonSelRef}
                 type='button'
-                className={[css.butActIt, isSelected ? css.isFavBut : css.notFavBut].join(' ')}
+                className={[css.butActIt, isSelected ? css.isSelBut : css.notSelBut].join(' ')}
             onClick={forClickSelectBut}
             >
                         Selected
+            </button>
+                </li>
+                <li>
+                    <button
+                ref={buttonDelRef}
+                id={film._id}
+                className={[css.butActIt, isFavorite ? css.isFavBut : css.notFavBut].join(' ')}
+                type='button'
+                onClick={forClickFavBut}
+            >
+                        Favorite
             </button>
             </li>
                     <li>
@@ -114,17 +145,6 @@ export const ManipButs = ({film, coef}) => {
                         Details
                             </button>
                             </Link>
-            </li>
-                <li>
-                    <button
-                ref={buttonDelRef}
-                id={film._id}
-                className={[css.butActIt, css.buttonDelete].join(' ')}
-                type='button'
-                // onClick={updateStateForDelete}
-            >
-                        Delete
-            </button>
             </li>
             </ul>
         </>

@@ -1,8 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { logIn, logOut, register, verifyEmail, delUser, findUser, updatePlayed, updateSelected } from "./operations";
+import { logIn, logOut, register, verifyEmail, delUser, findUser, updatePlayed, updateSelected, updateFavorite } from "./operations";
 
 const initialState = {
-    user: { name: null, email: null, id: null },
+    user: {
+        name: null,
+        email: null,
+        id: null,
+        played: [],
+        selected: [],
+        favorite: []
+    },
     token: null,
     isLoggedIn: false,
     error: null
@@ -45,9 +52,16 @@ const authSlice = createSlice({
         .addCase(verifyEmail.rejected, forRejected)
         .addCase(delUser.pending, forPending)
         .addCase(delUser.fulfilled, (state, action) => {
-            state.user = { name: null, email: null, id: null };
+            state.user = {
+                name: null,
+                email: null,
+                id: null,
+                played: [],
+                selected: [],
+                favorite: []
+            };
             state.token = null;
-            state.isLoggedIn = true;
+            state.isLoggedIn = false;
         })
         .addCase(delUser.rejected, forRejected)
         .addCase(logOut.pending, forPending)
@@ -82,6 +96,12 @@ const authSlice = createSlice({
             state.isLoggedIn = true;
         })
         .addCase(updateSelected.rejected, forRejected)
+        .addCase(updateFavorite.pending, forPending)
+        .addCase(updateFavorite.fulfilled, (state, action) => {
+            state.user.favorite = action.payload.user.favorite;
+            state.isLoggedIn = true;
+        })
+        .addCase(updateFavorite.rejected, forRejected)
     }
 });
 

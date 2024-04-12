@@ -12,22 +12,33 @@ export const Lists = () => {
 
     return (
         <>
+            {(allFilms.length > 0) ?
+            (<>
             <FilmList
                 allFilms={allFilms}
                 title='Catalogue'
             />
             {filter.length === 0 && 
                 <>
-                <FilmList
+                    {(arrSelected.length > 0) &&
+                        <FilmList
                 allFilms={arrSelected}
                 title='My list'
             />
-                <FilmList
+                }
+                    {(arrPlayed.length > 0) &&
+                        <FilmList
                 allFilms={arrPlayed}
                 title='Viewed'
                 />
+                }
                 </>
             }
+                </>) : (
+        <h2 style={{ padding: '20px' }}>Oopsss...Something went wrong...</h2>
+                    
+        )
+        }
         </>
     )
 };

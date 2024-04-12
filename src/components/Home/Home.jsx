@@ -2,25 +2,9 @@ import css from './Home.module.css'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/workWithBackend/selectors';
-import { useEffect } from 'react';
 
 const Home = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
-
-    useEffect(() => {
-        const body = document.querySelector('body');
-        body.style.height = '100%';
-        const root = document.querySelector('#root');
-        root.style.height = '100%';
-        const html = document.querySelector('html');
-        html.style.height = '100%';
-        const realScreenHeight = window.innerHeight;
-            if(realScreenHeight < 425){
-                body.style.height = 'auto';
-                root.style.height = 'auto';
-                html.style.height = 'auto';
-            }
-    });
 
     return(
         <div className={css.allDivHome}>
@@ -38,7 +22,7 @@ const Home = () => {
         </div>
         <div className={css.buttonsHome}>
         {isLoggedIn ? (
-            <Link to={'/contacts'}>
+            <Link to={'/films'}>
                 <button className={css.buttonHome}>Log in</button>
             </Link>
         ) : (

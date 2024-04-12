@@ -147,3 +147,21 @@ export const updateSelected = createAsyncThunk(
     }
     }
 );
+
+export const updateFavorite = createAsyncThunk(
+    'auth/updateFavorite',
+    async (dataForPut, thunkAPI) => {
+        const userId = dataForPut.id;
+        const newFavorite = dataForPut.favorite;
+        try {
+            const res = await axios.put(`/users/${userId}/favorite`, newFavorite);
+            return res.data;
+        } catch (e) {
+        if (e.response) {
+            return thunkAPI.rejectWithValue(e.response.data.message);
+        } else {
+            return thunkAPI.rejectWithValue(e.message);
+        }
+    }
+    }
+);

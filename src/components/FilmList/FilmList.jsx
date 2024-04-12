@@ -21,7 +21,7 @@ export const FilmList = ({allFilms, title}) => {
 
     return(
         <div className={[css.allDivFilmList, 'allDivFilmList'].join(' ')}>
-        {error ? (
+        {(error || allFilms.length === 0) ? (
         <h2>Oopsss...Something went wrong...</h2>
         ) : (
         <div id='divForFilmList' className={css.divForFilmList}

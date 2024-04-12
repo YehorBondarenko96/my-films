@@ -10,4 +10,6 @@ export const selectPlayed = state => state.auth.user.played;
 
 export const selectSelected = state => state.auth.user.selected;
 
+export const selectFavorite = state => state.auth.user.favorite;
+
 export const selectToken = state => state.auth.token;

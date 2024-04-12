@@ -38,35 +38,45 @@
     background-image: url('./stop-shape-svgrepo-com-hover.svg');
 }
 
-.buttonDelete {
-    background-size: 60%;
-    background-image: url('./close-1511-svgrepo-com.svg');
+.notFavBut {
+    background-size: 70%;
+    background-image: url('./heart-svgrepo-com.svg');
     transition: background-image 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.buttonDelete:hover {
-    background-image: url('./close-1511-svgrepo-com-hover.svg');
+.notFavBut:hover {
+    background-image: url('./heart-svgrepo-com-hover.svg');
+}
+
+.isFavBut {
+    background-size: 70%;
+    background-image: url('./heart-svgrepo-com-favorite.svg');
+    transition: background-image 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.isFavBut:hover {
+    background-image: url('./heart-svgrepo-com-favorite-hover.svg');
 }
 
 .butActIt:hover {
     border-color: #d3d3d3;
 }
 
-.notFavBut {
+.notSelBut {
     background-image: url('./bookmark-svgrepo-com.svg');
     transition: background-image 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.notFavBut:hover {
+.notSelBut:hover {
     background-image: url('./bookmark-svgrepo-com-hover.svg');
 }
 
-.isFavBut {
+.isSelBut {
     background-image: url('./bookmark-svgrepo-com-favorite.svg');
     transition: background-image 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.isFavBut:hover {
+.isSelBut:hover {
     background-image: url('./bookmark-svgrepo-com-favorite-hover.svg');
 }
 
