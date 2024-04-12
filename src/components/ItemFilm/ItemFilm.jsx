@@ -8,7 +8,7 @@ import { updateSelected } from "../../redux/workWithBackend/operations";
 
 
 
-export const ItemFilm = ({ film, activeId }) => {
+export const ItemFilm = ({ film, activeId, minWidth }) => {
     const disp = useDispatch();
     const screenOrient = useSelector(selectScreenOrient);
     const arrSelected = useSelector(selectSelected);
@@ -68,6 +68,7 @@ export const ItemFilm = ({ film, activeId }) => {
             const divPItemFilms = divPItemFilmsRef.current;
             const divInfoItemFilms = divInfoItemFilmsRef.current;
 
+            firstDivItemFilm.style.width = minWidth + 'px';
             firstDivItemFilm.style.borderRadius = screenWidth/(coef * 44) + 'px';
             divItemFilm.style.borderRadius = screenWidth/(coef * 44) + 'px';
             divItemFilm.style.textShadow = screenWidth / (coef * 250) + 'px ' + screenWidth / (coef * 250) + 'px ' + screenWidth / (coef * 100) + 'px black';
@@ -86,7 +87,7 @@ export const ItemFilm = ({ film, activeId }) => {
 
             divInfoItemFilms.style.marginTop = screenWidth / (coef * 4) + 'px'
         }
-    }, [activeId, screenOrient]);
+    }, [activeId, screenOrient, minWidth]);
 
     return(
         <div ref={firstDivItemFilmRef} className={[css.firstDivItemFilm, 'firstDivItemFilm'].join(' ')}

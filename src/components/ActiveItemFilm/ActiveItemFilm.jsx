@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { ManipButs } from 'components/ManipButs/ManipButs';
 
-export const ActiveItemFilm = ({ film }) => {
+export const ActiveItemFilm = ({ film, bigWidth }) => {
     const screenOrient = useSelector(selectScreenOrient);
     
     const allDivActItFilmRef = useRef(null);
@@ -20,6 +20,7 @@ export const ActiveItemFilm = ({ film }) => {
             
 
             allDivActItFilm.style.borderRadius = screenWidth / (coef * 44) + 'px';
+            allDivActItFilm.style.width = bigWidth + 'px';
             infoActIt.style.borderRadius = `0 0 ${screenWidth / (coef * 44)}px ${screenWidth / (coef * 44)}px`;
             infoActIt.style.padding = screenWidth / (coef * 50) + 'px';
             infoActIt.style.paddingBottom = screenWidth / (coef * 25) + 'px';

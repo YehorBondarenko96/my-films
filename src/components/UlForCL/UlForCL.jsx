@@ -12,6 +12,8 @@ import { Outlet } from "react-router-dom";
 export const UlForCL = ({allFilms}) => {
     const dispatch = useDispatch();
     const [films, setFilms] = useState(allFilms);
+    const [minWidth, setMinWidth] = useState(0);
+    const [bigWidth, setBigWidth] = useState(0);
     const filter = useSelector(selectFilter);
     const scrollLeftLists = useSelector(selectScrollLeftLists);
     const screenOrient = useSelector(selectScreenOrient);
@@ -47,7 +49,8 @@ export const UlForCL = ({allFilms}) => {
         if (screenWidth && itemsFilm.length > 0) {
             itemsFilm.forEach(i => {
             i.style.height = screenWidth/coef + 'px';
-            i.style.minWidth = screenWidth/(coef * 1.667) + 'px';
+                i.style.width = screenWidth / (coef * 1.667) + 'px';
+                setMinWidth(screenWidth / (coef * 1.667));
             i.style.fontSize = screenWidth/(coef * 19) + 'px'; 
             i.style.borderRadius = screenWidth/(coef * 22) + 'px';
             setActiveId(null);
@@ -74,13 +77,15 @@ export const UlForCL = ({allFilms}) => {
                 const notActiveItems = itemsFilm.filter(i => i.getAttribute('id') !== item.getAttribute('id'));
                 notActiveItems.forEach(i => {
                     i.style.height = screenWidth/coef + 'px';
-                    i.style.minWidth = screenWidth/(coef * 1.667) + 'px';
+                    i.style.width = screenWidth / (coef * 1.667) + 'px';
+                    setMinWidth(screenWidth / (coef * 1.667));
                     i.style.fontSize = screenWidth/(coef * 19) + 'px'; 
                     i.style.borderRadius = screenWidth/(coef * 44) + 'px';
                     i.classList.remove(css.iFilmActive);
                 });
                         item.style.height = screenWidth/coef * 1.4 + 'px';
-                        item.style.minWidth = screenWidth/(coef * 1.667) * 1.4 + 'px';
+                item.style.width = screenWidth / (coef * 1.667) * 1.4 + 'px';
+                setBigWidth(screenWidth / (coef * 1.667) * 1.4);
                         item.style.fontSize = screenWidth/(coef * 19) * 1.4 + 'px'; 
                         item.style.borderRadius = screenWidth/(coef * 44) * 1.4 + 'px';
                         item.classList.add(css.iFilmActive);
@@ -257,17 +262,19 @@ export const UlForCL = ({allFilms}) => {
                             }}
                             key={film.id}
                             id={film.id}
-                            className={[css.itemContact, 'itemContact'].join(' ')}>
+                            className={[css.itemFilm, 'itemContact'].join(' ')}>
                                 {activeId === film.id ? 
                                 <ActiveItemFilm
-                        film={film}
+                                    film={film}
+                                    bigWidth={bigWidth}
                                 />
                             : 
                                 <ItemFilm 
                         film={film}
                         index={films.indexOf(film)}
                         id={film.id}
-                        activeId={activeId}
+                                    activeId={activeId}
+                                    minWidth={minWidth}
                     />
                             }
                     </li>
