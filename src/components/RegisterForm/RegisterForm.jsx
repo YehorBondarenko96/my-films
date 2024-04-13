@@ -49,7 +49,7 @@ const RegisterForm = () => {
                 name='name'
                 type="text"
                 autoFocus
-                placeholder="Please, enter your name" />
+                placeholder={realScreenWidth > 550 ? "Please, enter your name" : "Enter your name"} />
                 </label>
                 <label className={css.labelRegisterForm}>
                     <span className={css.pRegisterForm}>Email</span>
@@ -58,7 +58,7 @@ const RegisterForm = () => {
                 type="email"
                 autoComplete="off"
                 autoFocus
-                placeholder="Please, enter your email" />
+                placeholder={realScreenWidth > 550 ? "Please, enter your email" : "Enter your email"} />
                 </label>
                 <label className={css.labelRegisterForm}>
                     <span className={css.pRegisterForm}>Password</span>
@@ -67,7 +67,7 @@ const RegisterForm = () => {
                 type="password"
                 autoComplete="off"
                 autoFocus
-                placeholder= {realScreenWidth > 550 ? "The password must consist of at least 7 characters" : "Password: min. 7 chars."} 
+                placeholder= {realScreenWidth > 550 ? "Please, enter your password" : "Enter your password"} 
                 />
                 </label>
                 <button className={css.buttonRegisterForm} type="submit">Registration</button>
