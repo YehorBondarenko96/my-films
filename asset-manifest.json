@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/my-films/static/css/main.bc880c4d.css",
-    "main.js": "/my-films/static/js/main.fddaa54a.js",
+    "main.js": "/my-films/static/js/main.201f3010.js",
     "static/css/433.492a2449.chunk.css": "/my-films/static/css/433.492a2449.chunk.css",
     "static/js/433.585733de.chunk.js": "/my-films/static/js/433.585733de.chunk.js",
     "static/css/160.badfb7d3.chunk.css": "/my-films/static/css/160.badfb7d3.chunk.css",
@@ -11,7 +11,7 @@
     "static/js/979.34898d95.chunk.js": "/my-films/static/js/979.34898d95.chunk.js",
     "static/js/756.8146a47f.chunk.js": "/my-films/static/js/756.8146a47f.chunk.js",
     "static/css/962.00c1dfce.chunk.css": "/my-films/static/css/962.00c1dfce.chunk.css",
-    "static/js/962.1150dfd4.chunk.js": "/my-films/static/js/962.1150dfd4.chunk.js",
+    "static/js/962.584b0412.chunk.js": "/my-films/static/js/962.584b0412.chunk.js",
     "static/css/894.4cabef9a.chunk.css": "/my-films/static/css/894.4cabef9a.chunk.css",
     "static/js/894.2198a1c4.chunk.js": "/my-films/static/js/894.2198a1c4.chunk.js",
     "static/css/544.9e9c391f.chunk.css": "/my-films/static/css/544.9e9c391f.chunk.css",
@@ -34,7 +34,7 @@
     "static/media/bookmark-svgrepo-com-hover.svg": "/my-films/static/media/bookmark-svgrepo-com-hover.42e998b673345c074e1e.svg",
     "static/media/bookmark-svgrepo-com.svg": "/my-films/static/media/bookmark-svgrepo-com.57258bd83e45c1fa29a9.svg",
     "main.bc880c4d.css.map": "/my-films/static/css/main.bc880c4d.css.map",
-    "main.fddaa54a.js.map": "/my-films/static/js/main.fddaa54a.js.map",
+    "main.201f3010.js.map": "/my-films/static/js/main.201f3010.js.map",
     "433.492a2449.chunk.css.map": "/my-films/static/css/433.492a2449.chunk.css.map",
     "433.585733de.chunk.js.map": "/my-films/static/js/433.585733de.chunk.js.map",
     "160.badfb7d3.chunk.css.map": "/my-films/static/css/160.badfb7d3.chunk.css.map",
@@ -44,7 +44,7 @@
     "979.34898d95.chunk.js.map": "/my-films/static/js/979.34898d95.chunk.js.map",
     "756.8146a47f.chunk.js.map": "/my-films/static/js/756.8146a47f.chunk.js.map",
     "962.00c1dfce.chunk.css.map": "/my-films/static/css/962.00c1dfce.chunk.css.map",
-    "962.1150dfd4.chunk.js.map": "/my-films/static/js/962.1150dfd4.chunk.js.map",
+    "962.584b0412.chunk.js.map": "/my-films/static/js/962.584b0412.chunk.js.map",
     "894.4cabef9a.chunk.css.map": "/my-films/static/css/894.4cabef9a.chunk.css.map",
     "894.2198a1c4.chunk.js.map": "/my-films/static/js/894.2198a1c4.chunk.js.map",
     "544.9e9c391f.chunk.css.map": "/my-films/static/css/544.9e9c391f.chunk.css.map",
@@ -52,6 +52,6 @@
   },
   "entrypoints": [
     "static/css/main.bc880c4d.css",
-    "static/js/main.fddaa54a.js"
+    "static/js/main.201f3010.js"
   ]
 }
