@@ -79,7 +79,6 @@ export const ManipButs = ({film, coef}) => {
     };
 
     const forClickDetBut = () => {
-        console.log(1);
         const filmsList = document.querySelector('.listFilmsForGap');
         const scrollUl = filmsList.scrollLeft;
         disp(setScrollLeftLists(scrollUl));
