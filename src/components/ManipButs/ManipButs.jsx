@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectScreenOrient } from "../../redux/selectors";
 import { Link } from "react-router-dom";
@@ -14,11 +14,12 @@ export const ManipButs = ({film, coef}) => {
     const arrSelected = useSelector(selectSelected);
     const arrFavorite = useSelector(selectFavorite);
     const userId = useSelector(selectUsId);
+    const [detInfoOpen, setDetInfoOpen] = useState(false);
+    const [manipURL, setManipURL] = useState(null);
 
     const isPlayed = arrPlayed.some(f => f.id === film.id);
     const isSelected = arrSelected.some(f => f.id === film.id);
     const isFavorite = arrFavorite.some(f => f.id === film.id);
-
 
     const ulButActItRef = useRef(null);
     const buttonPlayRef = useRef(null);
@@ -77,6 +78,13 @@ export const ManipButs = ({film, coef}) => {
             disp(updateFavorite(dataForUpdSel));
     };
 
+    const forClickDetBut = () => {
+        console.log(1);
+        const filmsList = document.querySelector('.listFilmsForGap');
+        const scrollUl = filmsList.scrollLeft;
+        disp(setScrollLeftLists(scrollUl));
+    };
+
     useEffect(() => {
         const screenWidth = screenOrient <= 1000 ? screenOrient : 1000;
         if(ulButActItRef.current && buttonPlayRef.current && buttonDetRef.current &&
@@ -96,8 +104,26 @@ export const ManipButs = ({film, coef}) => {
             buttonPlay.style.height = screenWidth / (coef * 13) + 'px';
             buttonDet.style.width = screenWidth / (coef * 13) + 'px';
             buttonDet.style.height = screenWidth / (coef * 13) + 'px';
-            }
+        }
     });
+
+    useEffect(() => {
+    const actualURL = window.location.href; 
+    const arrActURL = actualURL.split('/');
+    if (arrActURL[arrActURL.length - 1] === '') {
+        arrActURL.pop();
+    }
+    const lengthArrActURL = arrActURL.length;
+    if (arrActURL[lengthArrActURL - 1] === 'films') {
+        setDetInfoOpen(false);
+        setManipURL(`/films/${film.id}`);
+    } else {
+        setDetInfoOpen(true);
+        arrActURL.pop();
+        const newURL = arrActURL.join('/');
+        setManipURL(newURL);
+    }
+    }, [setDetInfoOpen, film]);
 
     return (
         <>
@@ -135,12 +161,13 @@ export const ManipButs = ({film, coef}) => {
             </button>
             </li>
                     <li>
-                            <Link to={`/films/${film.id}`} state={{from: window.location.href}}>
+                            <Link to={manipURL} state={{from: window.location.href}}>
                         
                     <button
                 ref={buttonDetRef}
                 type='button'
-                className={[css.butActIt, css.detBut].join(' ')}
+                className={[css.butActIt, css.detBut, detInfoOpen && css.detInfoOpen].join(' ')}
+                onClick={forClickDetBut}
             >
                         Details
                             </button>

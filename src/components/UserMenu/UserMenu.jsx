@@ -1,12 +1,12 @@
 import css from './UserMenu.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectUsEmail } from '../../redux/workWithBackend/selectors';
+import { selectUsName } from '../../redux/workWithBackend/selectors';
 import { logOut } from '../../redux/workWithBackend/operations';
 import { Link } from 'react-router-dom';
 import { setIsLoggedIn } from '../../redux/workWithBackend/slice';
 
 const UserMenu = () => {
-    const usEmail = useSelector(selectUsEmail);
+    const usName = useSelector(selectUsName);
     const dispatch = useDispatch();
 
     const handelClickLogOut = () => {
@@ -16,7 +16,7 @@ const UserMenu = () => {
 
     return(
         <div className={css.divUserMenu}>
-            <p className={css.pUserMenu}>{usEmail}</p>
+            <p className={css.pUserMenu}>{usName}</p>
             <Link to={'/'}>
             <button className={css.buttonUserMenu} onClick={handelClickLogOut}>Log out</button>
             </Link>

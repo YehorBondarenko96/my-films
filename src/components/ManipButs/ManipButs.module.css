@@ -89,3 +89,7 @@
 .detBut:hover {
     background-image: url('./arrow-down-339-svgrepo-com-hover.svg');
 }
+
+.detInfoOpen{
+    transform: rotate(180deg);
+}

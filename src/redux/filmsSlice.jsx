@@ -22,7 +22,7 @@ const filmsSlice = createSlice({
     reducers:{
         setScrollLeftLists: (state, action) => {state.scrollLeftLists = action.payload},
         setScreenOrientation: (state, action) => { state.screenOrientation = action.payload },
-        setEmail: (state, action) => { state.email = action.payload}
+        setEmail: (state, action) => { state.email = action.payload }
     },
     extraReducers: builder => {
         builder

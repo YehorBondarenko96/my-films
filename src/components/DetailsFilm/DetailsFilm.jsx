@@ -9,7 +9,7 @@ import { ManipButs } from "components/ManipButs/ManipButs";
 const DetailsFilm = () => {
     const screenOrient = useSelector(selectScreenOrient);
     const location = useLocation();
-    const [backLocation] = useState(location.state?.from ?? '/');
+    const [backLocation] = useState(location.state?.from ?? '/my-films');
     const {filmId} = useParams();
     const allFilms = useSelector(selectFilms);
     const film = allFilms.find(f => f.id === filmId);

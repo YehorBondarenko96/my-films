@@ -6,6 +6,8 @@ export const selectUsEmail = state => state.auth.user.email;
 
 export const selectUsId = state => state.auth.user.id;
 
+export const selectUsName = state => state.auth.user.name;
+
 export const selectPlayed = state => state.auth.user.played;
 
 export const selectSelected = state => state.auth.user.selected;
