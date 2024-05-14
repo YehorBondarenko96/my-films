@@ -77,24 +77,6 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     }
 );
 
-export const delUser = createAsyncThunk(
-    'auth/delete',
-    async (userId, thunkAPI) => {
-        
-        try {
-            const res = await axios.delete(`/users/${userId}`);
-            clearAuthHeader();
-            return res.data;
-        } catch (e) {
-        if (e.response) {
-            return thunkAPI.rejectWithValue(e.response.data.message);
-        } else {
-            return thunkAPI.rejectWithValue(e.message);
-        }
-    }
-    }
-);
-
 export const findUser = createAsyncThunk(
     'auth/findUser',
     async (userId, thunkAPI) => {

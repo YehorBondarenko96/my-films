@@ -22,21 +22,6 @@ const RegisterForm = () => {
         dispatch(setEmail(email));
     };
 
-    //     const body = document.querySelector('body');
-    //     body.style.height = '100%';
-    //     const root = document.querySelector('#root');
-    //     root.style.height = '100%';
-    //     const html = document.querySelector('html');
-    //     html.style.height = '100%';
-    //     const realScreenHeight = window.innerHeight;
-    //         if((realScreenHeight < 540 && realScreenHeight > 520) ||
-    //             (realScreenHeight < 450)){
-    //             body.style.height = 'auto';
-    //             root.style.height = 'auto';
-    //             html.style.height = 'auto';
-    //         }
-    // });
-
     return(
         <div className={css.divRegisterForm}>
             <h2 className={css.titleRegisterForm}>Registration in <span className={css.logoNameGreetingRegisterForm}>

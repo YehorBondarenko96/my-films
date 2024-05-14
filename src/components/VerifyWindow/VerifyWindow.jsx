@@ -2,7 +2,7 @@ import css from './VerifyWindow.module.css';
 import { useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectScreenOrient, selectEmail } from "../../redux/selectors";
-import { verifyEmail, delUser } from '../../redux/workWithBackend/operations';
+import { verifyEmail } from '../../redux/workWithBackend/operations';
 import { setRegistEnded } from '../../redux/workWithBackend/slice';
 import { selectUsId } from '../../redux/workWithBackend/selectors';
 
@@ -24,7 +24,6 @@ export const VerifyWindow = () => {
     const handelDivClick = (e) => { 
         if (!e.target.classList.contains(css.buttonVarWind) && usId) {
             dispatch(setRegistEnded(false));
-            dispatch(delUser(usId));
         }
     };
 
