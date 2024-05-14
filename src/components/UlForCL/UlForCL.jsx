@@ -74,7 +74,7 @@ export const UlForCL = ({allFilms}) => {
             realScreenWidth = window.innerWidth;
             screenWidth = realScreenWidth <= 1000 ? realScreenWidth : 1000;
             if(screenWidth && itemsFilm.length > 0){
-                const notActiveItems = itemsFilm.filter(i => i.getAttribute('id') !== item.getAttribute('id'));
+                const notActiveItems = itemFilmRef.current.filter(i => i.getAttribute('id') !== item.getAttribute('id'));
                 notActiveItems.forEach(i => {
                     i.style.height = screenWidth/coef + 'px';
                     i.style.width = screenWidth / (coef * 1.667) + 'px';
@@ -106,7 +106,7 @@ export const UlForCL = ({allFilms}) => {
         
         const forClickItem = (e, item, realScreenWidth) => {
             if (!e.target.classList.contains('buttonFav')) {
-                if(listFilmsRef){
+                if (listFilmsRef) {
                 listFilmsRef.removeEventListener('scroll', forScroll);
             };
             const rectItem = item.getBoundingClientRect();

@@ -58,7 +58,10 @@ export const ManipButs = ({film, coef}) => {
                 id: userId,
                 selected: newSelected
             };
-            disp(updateSelected(dataForUpdSel));
+        disp(updateSelected(dataForUpdSel));
+        setTimeout(() => {
+        window.location.reload();
+        }, 500);
     };
 
     const forClickFavBut = () => {
