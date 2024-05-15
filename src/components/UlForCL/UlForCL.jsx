@@ -60,20 +60,20 @@ export const UlForCL = ({allFilms}) => {
         }
 
         const forScroll = () => {
-                if(itemsFilm.length > 0){
+            if (itemsFilm.length > 0) {
                     itemsFilm.forEach(item => readRectItem(item, realScreenWidth));
                 };
         };
 
-            if(!listContHasELRef.current && listFilmsRef && itemsFilm){
+            if (!listContHasELRef.current && listFilmsRef && itemsFilm) {
                 listContHasELRef.current = true;
                 listFilmsRef.addEventListener('scroll', forScroll);
             };
 
-        const autoScroll = (item, conditionForAutoSc = 0) => {
+            const autoScroll = (item, conditionForAutoSc = 0) => {
             realScreenWidth = window.innerWidth;
             screenWidth = realScreenWidth <= 1000 ? realScreenWidth : 1000;
-            if(screenWidth && itemsFilm.length > 0){
+                if (screenWidth && itemsFilm.length > 0) {
                 const notActiveItems = itemFilmRef.current.filter(i => i.getAttribute('id') !== item.getAttribute('id'));
                 notActiveItems.forEach(i => {
                     i.style.height = screenWidth/coef + 'px';
@@ -97,17 +97,17 @@ export const UlForCL = ({allFilms}) => {
                         };
 
                             setTimeout(() => {
-                                if(listFilmsRef){
+                                if (listFilmsRef) {
                                     listFilmsRef.addEventListener('scroll', forScroll);
                                 };
                             }, 500);
             };
         };
         
-        const forClickItem = (e, item, realScreenWidth) => {
+            const forClickItem = (e, item, realScreenWidth) => {
             if (!e.target.classList.contains('buttonFav')) {
                 if (listFilmsRef) {
-                listFilmsRef.removeEventListener('scroll', forScroll);
+                    listFilmsRef.removeEventListener('scroll', forScroll);
             };
             const rectItem = item.getBoundingClientRect();
             const rectListFilms = listFilms.current.getBoundingClientRect();

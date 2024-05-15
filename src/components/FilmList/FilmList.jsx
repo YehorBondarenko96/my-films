@@ -3,12 +3,19 @@ import { UlForCL } from 'components/UlForCL/UlForCL';
 import { selectIsLoading, selectSecError } from '../../redux/selectors';
 import { useSelector } from "react-redux";
 import { Loader } from "../Loader/Loader";
+import { useEffect, useState } from 'react';
 
 
 export const FilmList = ({allFilms, title}) => {
     const realScreenWidth = window.innerWidth;
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectSecError);
+
+    const [key, setKey] = useState(1);
+
+    useEffect(() => {
+        setKey(prevKey => prevKey + 1)
+    }, [allFilms]);
 
     let varPadding = 20;
     if(realScreenWidth > 1000){
@@ -31,7 +38,7 @@ export const FilmList = ({allFilms, title}) => {
         }}
                     >
                         <h2>{title}</h2>
-                        {isLoading && !error ? <Loader /> : <UlForCL allFilms={allFilms} />}
+                        {isLoading && !error ? <Loader /> : <UlForCL key={key} allFilms={allFilms} />}
             </div>
             )}
         </div>
