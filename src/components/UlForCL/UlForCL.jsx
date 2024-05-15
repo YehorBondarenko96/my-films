@@ -63,14 +63,14 @@ export const UlForCL = ({allFilms}) => {
             if (itemsFilm.length > 0) {
                     itemsFilm.forEach(item => readRectItem(item, realScreenWidth));
                 };
-        };
+            };
 
             if (!listContHasELRef.current && listFilmsRef && itemsFilm) {
                 listContHasELRef.current = true;
                 listFilmsRef.addEventListener('scroll', forScroll);
             };
 
-            const autoScroll = (item, conditionForAutoSc = 0) => {
+            const autoScroll = (item, conditionForAutoSc = 0, click = false) => {
             realScreenWidth = window.innerWidth;
             screenWidth = realScreenWidth <= 1000 ? realScreenWidth : 1000;
                 if (screenWidth && itemsFilm.length > 0) {
@@ -93,9 +93,13 @@ export const UlForCL = ({allFilms}) => {
                         const scrollLForList = listFilms.current.scrollLeft;
                         listFilms.current.style.scrollBehavior = 'smooth';
                     if (conditionForAutoSc !== 0) {
-                        setTimeout(() => {
+                        if (click) {
+                            setTimeout(() => {
                             listFilms.current.scrollLeft = scrollLForList + conditionForAutoSc;
                         }, 0);
+                        } else {
+                            listFilms.current.scrollLeft = scrollLForList + conditionForAutoSc;
+                        }
                         };
 
                             setTimeout(() => {
@@ -110,7 +114,8 @@ export const UlForCL = ({allFilms}) => {
             if (!e.target.classList.contains('buttonFav')) {
                 if (listFilmsRef) {
                     listFilmsRef.removeEventListener('scroll', forScroll);
-            };
+                };
+            const click = true;
             const rectItem = item.getBoundingClientRect();
             const rectListFilms = listFilms.current.getBoundingClientRect();
             let firShiftVar = 260;
@@ -157,10 +162,10 @@ export const UlForCL = ({allFilms}) => {
             };
             if(rectItem.x < rectListFilms.x + rectListFilms.width/2) {
                 const conditionForAutoSc = 0 - rectListFilms.width/2 + rectItem.x + firShiftVar;
-                autoScroll(item, conditionForAutoSc);
+                autoScroll(item, conditionForAutoSc, click);
             } else {
                 const conditionForAutoSc = 0  - rectListFilms.width/2 + rectItem.x + secShiftVar;
-                autoScroll(item, conditionForAutoSc);
+                autoScroll(item, conditionForAutoSc, click);
             }
             }
         };
@@ -226,7 +231,7 @@ export const UlForCL = ({allFilms}) => {
             screenWidth = null;
             if(listFilmsRef){
                 listContHasELRef.current = false;
-                listFilmsRef.removeEventListener('scroll', forScroll);
+                // listFilmsRef.removeEventListener('scroll', forScroll);
             };
 
             if(itemsFilm.length > 0){
