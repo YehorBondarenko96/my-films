@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/my-films/static/css/main.bc880c4d.css",
-    "main.js": "/my-films/static/js/main.69af6395.js",
+    "main.js": "/my-films/static/js/main.2e944f61.js",
     "static/css/433.492a2449.chunk.css": "/my-films/static/css/433.492a2449.chunk.css",
     "static/js/433.585733de.chunk.js": "/my-films/static/js/433.585733de.chunk.js",
     "static/css/160.badfb7d3.chunk.css": "/my-films/static/css/160.badfb7d3.chunk.css",
     "static/js/160.7cb83635.chunk.js": "/my-films/static/js/160.7cb83635.chunk.js",
     "static/css/698.acb5d7cc.chunk.css": "/my-films/static/css/698.acb5d7cc.chunk.css",
-    "static/js/698.b4eb240f.chunk.js": "/my-films/static/js/698.b4eb240f.chunk.js",
+    "static/js/698.4ead6c7d.chunk.js": "/my-films/static/js/698.4ead6c7d.chunk.js",
     "static/js/979.34898d95.chunk.js": "/my-films/static/js/979.34898d95.chunk.js",
     "static/js/756.8146a47f.chunk.js": "/my-films/static/js/756.8146a47f.chunk.js",
     "static/css/962.00c1dfce.chunk.css": "/my-films/static/css/962.00c1dfce.chunk.css",
     "static/js/962.348d5dd9.chunk.js": "/my-films/static/js/962.348d5dd9.chunk.js",
     "static/css/894.605200fd.chunk.css": "/my-films/static/css/894.605200fd.chunk.css",
-    "static/js/894.e2c3d5f0.chunk.js": "/my-films/static/js/894.e2c3d5f0.chunk.js",
+    "static/js/894.f4b8bcdf.chunk.js": "/my-films/static/js/894.f4b8bcdf.chunk.js",
     "static/css/544.9e9c391f.chunk.css": "/my-films/static/css/544.9e9c391f.chunk.css",
     "static/js/989.5e268d24.chunk.js": "/my-films/static/js/989.5e268d24.chunk.js",
     "static/media/video-camera-film-svgrepo-com.svg": "/my-films/static/media/video-camera-film-svgrepo-com.52b241de73648d92a79d.svg",
@@ -34,24 +34,24 @@
     "static/media/bookmark-svgrepo-com-hover.svg": "/my-films/static/media/bookmark-svgrepo-com-hover.42e998b673345c074e1e.svg",
     "static/media/bookmark-svgrepo-com.svg": "/my-films/static/media/bookmark-svgrepo-com.57258bd83e45c1fa29a9.svg",
     "main.bc880c4d.css.map": "/my-films/static/css/main.bc880c4d.css.map",
-    "main.69af6395.js.map": "/my-films/static/js/main.69af6395.js.map",
+    "main.2e944f61.js.map": "/my-films/static/js/main.2e944f61.js.map",
     "433.492a2449.chunk.css.map": "/my-films/static/css/433.492a2449.chunk.css.map",
     "433.585733de.chunk.js.map": "/my-films/static/js/433.585733de.chunk.js.map",
     "160.badfb7d3.chunk.css.map": "/my-films/static/css/160.badfb7d3.chunk.css.map",
     "160.7cb83635.chunk.js.map": "/my-films/static/js/160.7cb83635.chunk.js.map",
     "698.acb5d7cc.chunk.css.map": "/my-films/static/css/698.acb5d7cc.chunk.css.map",
-    "698.b4eb240f.chunk.js.map": "/my-films/static/js/698.b4eb240f.chunk.js.map",
+    "698.4ead6c7d.chunk.js.map": "/my-films/static/js/698.4ead6c7d.chunk.js.map",
     "979.34898d95.chunk.js.map": "/my-films/static/js/979.34898d95.chunk.js.map",
     "756.8146a47f.chunk.js.map": "/my-films/static/js/756.8146a47f.chunk.js.map",
     "962.00c1dfce.chunk.css.map": "/my-films/static/css/962.00c1dfce.chunk.css.map",
     "962.348d5dd9.chunk.js.map": "/my-films/static/js/962.348d5dd9.chunk.js.map",
     "894.605200fd.chunk.css.map": "/my-films/static/css/894.605200fd.chunk.css.map",
-    "894.e2c3d5f0.chunk.js.map": "/my-films/static/js/894.e2c3d5f0.chunk.js.map",
+    "894.f4b8bcdf.chunk.js.map": "/my-films/static/js/894.f4b8bcdf.chunk.js.map",
     "544.9e9c391f.chunk.css.map": "/my-films/static/css/544.9e9c391f.chunk.css.map",
     "989.5e268d24.chunk.js.map": "/my-films/static/js/989.5e268d24.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bc880c4d.css",
-    "static/js/main.69af6395.js"
+    "static/js/main.2e944f61.js"
   ]
 }
