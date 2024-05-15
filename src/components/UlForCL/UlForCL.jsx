@@ -59,7 +59,7 @@ export const UlForCL = ({allFilms}) => {
             listFilms.current.style.gap = screenWidth/(coef * 10) + 'px';
         }
 
-        const forScroll = () => {
+            const forScroll = () => {
             if (itemsFilm.length > 0) {
                     itemsFilm.forEach(item => readRectItem(item, realScreenWidth));
                 };
@@ -92,8 +92,10 @@ export const UlForCL = ({allFilms}) => {
                         setActiveId(item.getAttribute('id'));
                         const scrollLForList = listFilms.current.scrollLeft;
                         listFilms.current.style.scrollBehavior = 'smooth';
-                        if(conditionForAutoSc !== 0){
+                    if (conditionForAutoSc !== 0) {
+                        setTimeout(() => {
                             listFilms.current.scrollLeft = scrollLForList + conditionForAutoSc;
+                        }, 0);
                         };
 
                             setTimeout(() => {
